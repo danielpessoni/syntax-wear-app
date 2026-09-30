@@ -9,21 +9,21 @@ export const Header = () => {
             <header className="fixed top-10 left-0 right-0 z-10 mx-10">
                 <div className='bg-white max-w-330 mx-auto flex justify-between items-center py-3 px-7 rounded-2xl mt-5'>
                     <img className='w-32 md:w-36' src={Logo} alt="Logo SytaxWear" />
-                    <nav className='hidden md:block'>
-                        <ul className='flex gap-10'>
+                    <nav className='hidden md:flex md:flex-1 md:justify-center'>
+                        <ul className='flex items-center justify-center gap-10 md:max-[1000px]:gap-[clamp(0.625rem,1.4vw,0.875rem)]'>
                             <li><a href="#">Masculino</a></li>
                             <li><a href="#">Feminino</a></li>
                             <li><a href="#">Outlet</a></li>
                         </ul>
                     </nav>
 
-                    <nav>
-                        <ul className='flex gap-4 md:gap-10'>
+                    <nav className='md:flex-1'>
+                        <ul className='flex gap-4 md:w-full md:items-center md:justify-end md:gap-10 md:max-[1000px]:gap-[clamp(0.5rem,1.2vw,0.75rem)]'>
                             <li className='hidden md:block'><a href="#">Nossas Lojas</a></li>
                             <li className='hidden md:block'><a href="#">Sobre</a></li>
-                            <li><a href="#"><img src={IconUser} alt="" /></a></li>
-                            <li><a href="#"><img src={IconAbout} alt="" /></a></li>
-                            <li><a href="#"><img src={IconCart} alt="" /></a></li>
+                            <li><a href="#"><img src={IconUser} alt="Botão de Usuário" /></a></li>
+                            <li><a href="#"><img src={IconAbout} alt="Botão de Dúvidas" /></a></li>
+                            <li><a href="#"><img src={IconCart} alt="Botão de Carrinho" /></a></li>
                         </ul>
                     </nav>
                 </div>
