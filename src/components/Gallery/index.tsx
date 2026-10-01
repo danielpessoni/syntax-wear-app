@@ -4,6 +4,8 @@ import galeriaTenisBrancoEPreto from '@/assets/images/galeria-tenis-branco-e-pre
 import galeriaTenisCinza from '@/assets/images/galeria-tenis-cinza.jpg'
 import galeriaTenisColorido from '@/assets/images/galeria-tenis-colorido.jpg'
 import galeriaTenisRoxo from '@/assets/images/galeria-tenis-roxo.jpg'
+import { Overlay } from '../Overlay'
+import { Button } from '../Button'
 
 export const Gallery = () => {
     return (
@@ -11,16 +13,10 @@ export const Gallery = () => {
             <article className="group relative [grid-area:highlight] overflow-hidden rounded-[20px] max-md:min-h-123.5">
                 <img src={galeriaHomem} alt="Modelo masculino usando tênis SyntaxWear" className="absolute inset-0 h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-black/20 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100" />
-                <div className="relative z-10 flex h-full flex-col items-center justify-center gap-5 px-4 text-center text-white opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100">
-                    <div className="flex flex-col items-center gap-2.5">
-                        <h2 className="text-xl font-medium leading-6 tracking-[0.08em]">Krypton One</h2>
-                        <p className="text-2xl font-medium leading-8 tracking-[0.08em]">Estilo urbano com atitude</p>
-                    </div>
-                    <div className="flex gap-2.5">
-                        <button type="button" className="h-6.5 min-w-23.5 rounded-full border-2 border-white px-4 text-xs font-medium leading-none">Feminino</button>
-                        <button type="button" className="h-6.5 min-w-23.5 rounded-full border-2 border-white px-4 text-xs font-medium leading-none">Masculino</button>
-                    </div>
-                </div>
+                <Overlay title='Krypton One' subtitle='Estilo urbano com atitude' className=''>
+                    <Button variant='secondary'>Feminino</Button>
+                    <Button variant='secondary'>Masculino</Button>
+                </Overlay>
             </article>
             <img src={galeriaTenisBrancoEPreto} alt="Tênis branco e preto com sola azul" className="h-full w-full rounded-[20px] object-cover [grid-area:sneaker-white] max-md:h-auto max-md:aspect-2/1" />
             <img src={galeriaTenisRoxo} alt="Tênis roxo com detalhes verde-menta" className="h-full w-full rounded-[20px] object-cover [grid-area:sneaker-purple] max-md:h-auto max-md:aspect-2/1" />
