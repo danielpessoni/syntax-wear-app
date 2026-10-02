@@ -10,7 +10,7 @@ export const Button = ({ children, variant = "primary", size = "md" }: ButtonPro
         base: "flex justify-center items-center gap-2 text-nowrap leading-none hover:cursor-pointer transition-colors duration-200 font-medium rounded-full py-2.5 transition",
         variant: {
             primary: "bg-white text-[#6329A2] hover:bg-gray-100",
-            secondary: "bg-transparent border border-white text-white hover:bg-white hover:text-black"
+            secondary: "bg-transparent border border-white hover:bg-white hover:text-black"
         },
         size:{
             sm: "px-5",

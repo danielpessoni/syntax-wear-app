@@ -7,7 +7,7 @@ export const Header = () => {
     return (
         <div className="relative">
             <header className="fixed top-10 left-0 right-0 z-10 mx-10">
-                <div className='bg-white max-w-330 mx-auto flex justify-between items-center py-3 px-7 rounded-2xl mt-5'>
+                <div className='bg-white text-black max-w-330 mx-auto flex justify-between items-center py-3 px-7 rounded-2xl mt-5'>
                     <img className='w-32 md:w-36' src={Logo} alt="Logo SytaxWear" />
                     <nav className='hidden md:flex md:flex-1 md:justify-center'>
                         <ul className='flex items-center justify-center gap-10 md:max-[1000px]:gap-[clamp(0.625rem,1.4vw,0.875rem)]'>
