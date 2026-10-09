@@ -3,6 +3,7 @@ import IconUser from '@/assets/images/Icon-User.png'
 import IconAbout from '@/assets/images/icon-about.png'
 import IconCart from '@/assets/images/icon-cart.png'
 import { Link } from '@tanstack/react-router'
+import { ShoppingCart } from '../ShoppingCart'
 
 export const Header = () => {
     return (
@@ -27,8 +28,13 @@ export const Header = () => {
 
                             <Link to='/sign-in'><img src={IconUser} alt="Ícone de login" /></Link>
 
-                            <li><a href="#"><img src={IconAbout} alt="Ícone de Sobre" /></a></li>
-                            <li><a href="#"><img src={IconCart} alt="Ícone de Carrinho" /></a></li>
+                            <li>
+                                <a href="#"><img src={IconAbout} alt="Ícone de Sobre" /></a></li>
+                            {/* <li>
+                                <a href="#"><img src={IconCart} alt="Ícone de Carrinho" /></a>
+                            </li> */}
+
+                            <ShoppingCart />
                         </ul>
                     </nav>
                 </div>
