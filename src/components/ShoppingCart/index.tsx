@@ -8,12 +8,15 @@ export const ShoppingCart = () => {
     const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
     const { cart, removeFromCart, incrementInCart, decrementInCart } = useContext(CartContext)
 
-    console.log("Items no Carrinho: ", cart)
-
     return (
         <>
-            <button className='cursor-pointer' onClick={() => setCartIsOpen(!cartIsOpen)}>
+            <button className='cursor-pointer relative' onClick={() => setCartIsOpen(!cartIsOpen)}>
                 <img src={IconCart} alt="Ícone de Carrinho de Compras" />
+                {cart.length > 0 && (
+                    <span className='absolute -top-2 -right-2 bg-red-500 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs'>
+                        {cart.length}
+                    </span>
+                )}
             </button>
 
             {/* Overlay */}
@@ -54,7 +57,7 @@ export const ShoppingCart = () => {
                                         <div className='border flex gap-6 py-1 px-3'>
                                             <button className='cursor-pointer' onClick={() => decrementInCart(product)}>-</button>
                                             <p>{product.quantity}</p>
-                                            <button className='cursor-pointer'onClick={() => incrementInCart(product)}>+</button>
+                                            <button className='cursor-pointer' onClick={() => incrementInCart(product)}>+</button>
                                         </div>
                                     </div>
                                 </div>
