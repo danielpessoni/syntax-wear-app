@@ -25,7 +25,9 @@ export const Header = () => {
                             <li className="hidden md:block">
                                 <Link to="/our-stores">Nossas Lojas</Link>
                             </li>
-                            <li className="hidden md:block"><a href="#">Sobre</a></li>
+                            <li className="hidden md:block">
+                                <Link to="/about">Sobre</Link>
+                            </li>
 
                             <Link to='/sign-in'><img src={IconUser} alt="Ícone de login" /></Link>
 
