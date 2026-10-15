@@ -13,7 +13,7 @@ export const Gallery = () => {
             <article className="group relative [grid-area:highlight] overflow-hidden rounded-[20px] max-md:min-h-123.5">
                 <img src={galeriaHomem} alt="Modelo masculino usando tênis SyntaxWear" className="absolute inset-0 h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-black/20 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100" />
-                <Overlay title='Krypton One' subtitle='Estilo urbano com atitude' className=''>
+                <Overlay title='Krypton One' subtitle='Estilo urbano com atitude' className="">
                     <Button variant='secondary'>Feminino</Button>
                     <Button variant='secondary'>Masculino</Button>
                 </Overlay>
