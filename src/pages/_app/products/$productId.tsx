@@ -4,9 +4,20 @@ import { formatCurrency } from '../../../helpers/currency-format'
 import { useContext } from 'react'
 import { CartContext } from '../../../contexts/CartContext'
 import { CEPForm } from "../../../components/CEPForm"
+
 export const Route = createFileRoute('/_app/products/$productId')({
     component: RouteComponent,
-})
+    head: ({ params }) => {
+
+        const filteredProduct = products.find(
+            (product) => product.id === Number(params.productId)
+        );
+
+        const title = filteredProduct ? `${filteredProduct.name} - Produtos - SyntaxWear` : 'Produto não encontrado - SyntaxWear';
+
+        return { meta: [{ title }] }
+    },
+});
 
 function RouteComponent() {
     const { addToCart } = useContext(CartContext)
@@ -20,9 +31,9 @@ function RouteComponent() {
         <section className='text-black container mb-10 pt-44 md:pt-54 pb-10 md:px-10 text-center min-h-[80vh] flex flex-col items-center justify-center'>
             <h1 className=" text-xl font-bold mb-4">Produto não encontrado</h1>
             <p className="mb-6">O produto que você está procurando não existe ou foi removido.</p>
-            <Link 
-            to="/products"
-            className="text-accent hover:text-accent-hover underline"
+            <Link
+                to="/products"
+                className="text-accent hover:text-accent-hover underline"
             >Voltar para produtos</Link>
         </section>
     );
