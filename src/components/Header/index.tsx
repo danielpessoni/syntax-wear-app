@@ -1,9 +1,11 @@
 import Logo from '@/assets/images/Logo.png'
 import IconUser from '@/assets/images/Icon-User.png'
-// import IconAbout from '@/assets/images/icon-about.png'
+import IconAbout from '@/assets/images/icon-about.png'
 import { Link } from '@tanstack/react-router'
-import { ShoppingCart } from '../ShoppingCart'
 import { MenuMobile } from "../MenuMobile"
+import { CartButton } from "../CartButton";
+import { CartDrawer } from "../CartDrawer";
+import { useState } from "react";
 
 export interface NavLink {
     name: string;
@@ -17,6 +19,9 @@ const navLinks: NavLink[] = [
 ]
 
 export const Header = () => {
+
+    const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
+
     return (
         <div className="relative">
             <header className="fixed top-5 left-0 right-0 z-10 mx-10">
@@ -38,12 +43,12 @@ export const Header = () => {
                             <li className="hidden lg:block">
                                 <Link to="/our-stores">Nossas Lojas</Link>
                             </li>
-                            <li className="hidden lg:block">
+                            {/* <li className="hidden lg:block">
                                 <Link to="/about">Sobre</Link>
-                            </li>
+                            </li> */}
 
                             <li className="lg:hidden">
-                                <MenuMobile navLinks={navLinks}/>
+                                <MenuMobile navLinks={navLinks} />
                             </li>
 
                             <li className="hidden lg:block">
@@ -52,18 +57,21 @@ export const Header = () => {
                                 </Link>
                             </li>
 
-                            {/* <li className="hidden lg:block">
+                            <li className="hidden lg:block">
                                 <Link to="/about">
                                     <img src={IconAbout} alt="Ícone de Sobre" />
                                 </Link>
-                            </li> */}
+                            </li>
 
-                            <ShoppingCart />
+                            <li>
+                                <CartButton onClick={() => setCartIsOpen(true)}/>
+                            </li>
                         </ul>
                     </nav>
                 </div>
 
             </header>
+            <CartDrawer isOpen={cartIsOpen} onClose={() => setCartIsOpen(false)} />
         </div>
     )
 }
