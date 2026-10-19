@@ -1,7 +1,9 @@
 import Banner from '@/assets/images/banner.jpg'
 import { Button } from '../Button'
+import { useRouter } from "@tanstack/react-router"
 
 export const Hero = () => {
+    const router = useRouter();
     return (
         <div className="container">
             <section className="relative h-125 rounded-[20px] mb-10 ">
@@ -13,8 +15,17 @@ export const Hero = () => {
                         <h1 className="text-2xl leading-9 tracking-widest mb-10">Transforme qualquer passo em presença</h1>
 
                         <div className="flex gap-3.5">
-                            <Button variant='secondary' size='sm'>Ver modelos</Button>
-                            <Button variant='primary'>Comprar</Button>
+                            <Button 
+                            variant='secondary' 
+                            size='sm' 
+                            onClick={() => router.navigate({ to: "/products" })}
+                            >
+                                Ver modelos</Button>
+                            <Button 
+                            variant='primary'
+                            
+                            >
+                                Comprar</Button>
                         </div>
                     </div>
                 </div>
