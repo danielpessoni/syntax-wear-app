@@ -1,7 +1,27 @@
 import { useRegisterForm } from "./register-form.schema.ts";
 
+const formatPhoneNumber = (value: string): string => {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+
+  if (digits.length <= 2) {
+    return digits ? `(${digits}` : "";
+  }
+
+  const areaCode = digits.slice(0, 2);
+  const subscriberNumber = digits.slice(2);
+  const prefix = `(${areaCode}) `;
+  const firstGroupLength = digits.length > 10 ? 5 : 4;
+
+  if (subscriberNumber.length <= firstGroupLength) {
+    return `${prefix}${subscriberNumber}`;
+  }
+
+  return `${prefix}${subscriberNumber.slice(0, firstGroupLength)}-${subscriberNumber.slice(firstGroupLength)}`;
+};
+
 export const RegisterForm = () => {
   const { register, errors, isSubmitting } = useRegisterForm();
+  const phoneRegistration = register("phone");
 
   return (
     <form className="text-black">
@@ -65,7 +85,10 @@ export const RegisterForm = () => {
       {/* Campo de celular */}
       <div>
         <label className="text-xs text-gray-600">Telefone*</label>
-        <input className={`w-full border rounded-xs px-1 mt-1 focus:outline-none focus:ring-2 ${errors.phone ? "border-red-500 focus:ring-red-400" : "border-border focus:ring-accent"}`} type="tel" {...register("phone")} />
+        <input className={`w-full border rounded-xs px-1 mt-1 focus:outline-none focus:ring-2 ${errors.phone ? "border-red-500 focus:ring-red-400" : "border-border focus:ring-accent"}`} type="tel" {...phoneRegistration} onChange={(event) => {
+          event.target.value = formatPhoneNumber(event.target.value);
+          phoneRegistration.onChange(event);
+        }} />
 
         {errors.phone && <p className="text-xs text-error mt-1">{errors.phone.message}</p>}
       </div>

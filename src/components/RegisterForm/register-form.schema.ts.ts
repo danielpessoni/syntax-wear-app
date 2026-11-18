@@ -3,6 +3,11 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { isValidCPF } from "../../utils/cpf-validator";
 
+const isValidPhone = (phone: string): boolean => {
+  const digits = phone.replace(/\D/g, "");
+  return /^\d{10,11}$/.test(digits);
+};
+
 export const registerUserFormSchema = z
   .object({
     firstName: z.string().nonempty("Primeiro nome é obrigatório"),
@@ -26,7 +31,13 @@ export const registerUserFormSchema = z
         "Data de nascimento inválida"
       ),
 
-      phone: z.string().nonempty("Telefone é obrigatório")
+    phone: z
+      .string()
+      .nonempty("Telefone é obrigatório")
+      .refine(
+        isValidPhone,
+        "Informe o telefone com DDD, usando 10 ou 11 dígitos"
+      ),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "As senhas não coincidem",
@@ -45,7 +56,7 @@ export const useRegisterForm = () => {
     reset
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerUserFormSchema),
-    mode: "onBlur",
+    mode: "onChange",
     defaultValues: {
         email: "",
         password: "",
